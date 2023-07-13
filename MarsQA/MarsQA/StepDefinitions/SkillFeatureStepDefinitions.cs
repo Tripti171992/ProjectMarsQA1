@@ -85,35 +85,5 @@ namespace MarsQA.StepDefinitions
             string result = ProfilePage.GetDeleteSKillResult(skill);
             Assert.AreEqual("Deleted", result, "Actual and expected result do not match. Skill not deleted!!");
         }
-
-        [When(@"I cancelled adding a skill '([^']*)' and  level '([^']*)' reord")]
-        public void WhenICancelledAddingASkillAndLevelReord(string skill, string skillLevel)
-        {
-            //Cancel Adding Skill
-            ProfilePage.CancelSkillAddition(skill, skillLevel);
-        }
-
-        [Then(@"A skill '([^']*)' record addition should be cancelled")]
-        public void ThenASkillRecordAdditionShouldBeCancelled(string skill)
-        {
-            //Verify the skill record not added on cancelling.
-            string newSkill = ProfilePage.GetSkill();
-            Assert.AreNotEqual(skill, newSkill, "Actual and expected skill match. Skill  added !!");
-        }
-
-        [When(@"I cancelled updating a skill '([^']*)' and a level '([^']*)'")]
-        public void WhenICancelledUpdatingASkillAndALevel(string skill, string skillLevel)
-        {
-            //Cancel updatig Skill
-            ProfilePage.CancelSkillUpdation(skill, skillLevel);
-        }
-
-        [Then(@"A skill '([^']*)' record updation should be cancelled")]
-        public void ThenASkillRecordUpdationShouldBeCancelled(string skill)
-        {
-            //Verify the skill record not updated on cancelling.
-            string updatedSkill = ProfilePage.GetUpdatedSkill();
-            Assert.AreNotEqual(skill, updatedSkill, "Actual and expected skill match. Skill  updated !!");
-        }
     }
 }

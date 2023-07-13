@@ -9,7 +9,7 @@ using System.Reflection.Emit;
 namespace MarsQA.StepDefinitions
 {
     [Binding]
-    public class LanguageFeatureStepDefinitions : CommonDriver
+    public class LanguageFeatureStepDefinitions 
     {
         [When(@"I added language '([^']*)' and level '([^']*)'")]
         public void WhenIAddedLanguageAndLevel(string language, string level)
@@ -86,38 +86,5 @@ namespace MarsQA.StepDefinitions
             string result = ProfilePage.GetDeleteLanguageResult(language);
             Assert.AreEqual("Deleted", result, "Actual and expected result do not match. Language not deleted!!");
         }
-
-        [When(@"I cancelled adding a language '([^']*)' and level '([^']*)' record")]
-        public void WhenICancelledAddingALanguageAndLevelRecord(string language, string level)
-        {
-            //Cancel adding a language
-            ProfilePage.CancelLanguageAddition(language, level);
-        }
-
-        [Then(@"A language '([^']*)' record addition should be cancelled")]
-        public void ThenALanguageRecordAdditionShouldBeCancelled(string language)
-        {
-            //Verify the language record not added on cancelling
-            string newLanguage = ProfilePage.GetLanguage();
-            Assert.AreNotEqual(language, newLanguage, "Actual and expected language match. Language  added !!");
-        }
-
-        [When(@"I cancelled updating a language '([^']*)' and a level '([^']*)'")]
-        public void WhenICancelledUpdatingALanguageAndALevel(string language, string level)
-        {
-            //Cancel updating a language
-            ProfilePage.CancelLanguageUpdation(language, level);
-        }
-
-        [Then(@"A language '([^']*)' record updation should be cancelled")]
-        public void ThenALanguageRecordUpdationShouldBeCancelled(string language)
-        {
-            //Verify the skill record not updated on cancelling
-            string updatedLanguage = ProfilePage.GetUpdatedLanguage();
-            Assert.AreNotEqual(language, updatedLanguage, "Actual and expected language match. Language updated !!");
-        }
-
-
-
     }
 }

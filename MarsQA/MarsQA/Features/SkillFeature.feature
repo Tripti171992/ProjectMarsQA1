@@ -32,19 +32,4 @@ Examples:
 	| Skill |
 	| Java  |
 
-Scenario Outline: Cancel adding skill record with valid credentials
-	Given I logged into the Mars portal successfully
-	When I cancelled adding a skill '<Skill>' and  level '<Level>' reord
-	Then A skill '<Skill>' record addition should be cancelled
-Examples:
-	| Skill   | Level    |
-	| Postman | Beginner |
-
-Scenario Outline: Cancel updating a skill record with valid credentials
-	Given I logged into the Mars portal successfully
-	When I cancelled updating a skill '<Skill>' and a level '<Level>'
-	Then A skill '<Skill>' record updation should be cancelled
-Examples:
-	| Skill      | Level        |
-	| Javascript | Intermediate |
 

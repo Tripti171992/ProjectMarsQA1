@@ -1,6 +1,7 @@
 ﻿using MarsQA.Data;
 using MarsQA.Utilities;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.Events;
 using System;
 using System.Collections.Generic;
@@ -29,11 +30,9 @@ namespace MarsQA.Pages
         public static void Login()
         {
             //------Signing in into Mars--------
-            //Launch URL for Mars
-            CommonDriver.NavigateUrl();
 
             //Click on "Sign In" button
-            Thread.Sleep(3000);
+            Wait.WaitToBeClickable(CommonDriver.driver, "XPath", "//*[text()='Sign In']", 4);
             try
             {
                 SignInButton.Click();
@@ -50,21 +49,19 @@ namespace MarsQA.Pages
 
             //Click on "Login" button
             LoginButton.Click();
-            Thread.Sleep(2000);
         }
         public static string GetUserName()
         {
             //Return username
+            Wait.WaitToExist(CommonDriver.driver, "XPath", "//a[text()=' Chat']/following-sibling::span", 3);
             return UserNameLable.Text;
         }
         public static void Registration()
         {
             //--------Registering into Mars--------
-            //Launch URL for Mars
-            CommonDriver.NavigateUrl();
 
             //Click on "Join" button.
-            Thread.Sleep(2000);
+            Wait.WaitToBeClickable(CommonDriver.driver, "XPath", "//button[text()='Join']", 4);
             JoinButton.Click();
 
             //Enter new user information
@@ -75,11 +72,11 @@ namespace MarsQA.Pages
             ConfirmPasswordTextbox.SendKeys(UserInformation.ConfirmPassword);
             Checkbox.Click();
             FinalJoinButton.Click();
-            Thread.Sleep(2000);
         }
         public static string GetRegistrationMessage()
         {
             //return registration message
+            Wait.WaitToExist(CommonDriver.driver, "XPath", "//div[@class='ns-box-inner']", 6);
             return RegisterationMessage.Text;
         }
 

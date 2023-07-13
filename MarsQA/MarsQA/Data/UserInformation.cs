@@ -16,7 +16,7 @@ namespace MarsQA.Data
         public static string LastName = "TestLN";
 
         //Email Address
-        public static string EmailAddress = "test57@gmail.com";
+        public static string EmailAddress = "test73@gmail.com";
 
         //Password
         public static string Password = "test@123";

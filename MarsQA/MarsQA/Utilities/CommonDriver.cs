@@ -1,36 +1,33 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TechTalk.SpecFlow;
 
 namespace MarsQA.Utilities
 {
-    public class CommonDriver
+    [Binding]
+    public sealed class CommonDriver
     {
         //Initialize the browser
         public static IWebDriver driver;
-        public void Initialize()
+
+        [BeforeScenario]
+        public void BeforeScenarioWithTag()
         {
             //Defining the browser
             driver = new ChromeDriver();
 
             //Maximise the window
             driver.Manage().Window.Maximize();
-        }
 
-        //Closing browser
-        public void Close()
-        {           
-            driver.Close();
-        }
-        //Navigating to Mars portal
-        public static void NavigateUrl()
-        {           
+            //Navigating to Mars portal
             driver.Navigate().GoToUrl("http://localhost:5000/");
         }
 
+        [AfterScenario]
+        public void AfterScenario()
+        {
+            //Closing the browser
+            driver.Close();
+        }
     }
 }

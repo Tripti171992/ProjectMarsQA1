@@ -9,7 +9,6 @@ namespace MarsQA.StepDefinitions
     [Binding]
     public class SignInAndRegistrationFeatureStepDefinitions
     {
-
         [Given(@"I registered into the Mars portal")]
         public void GivenIRegisteredIntoTheMarsPortal()
         {
@@ -39,6 +38,5 @@ namespace MarsQA.StepDefinitions
             string actualUserName = HomePage.GetUserName();
             Assert.AreEqual(expectedUserName, actualUserName, "Actual and expected username do not match.User not logged in successfully !!");
         }
-
     }
 }
